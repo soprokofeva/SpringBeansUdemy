@@ -9,12 +9,19 @@
 
     <!-- add entry to enable component scanning -->
 
-    <context:component-scan base-package="org.example.springdemo" />
+    <context:component-scan base-package="org.example.springdemo"/>
 
     <!-- Defines the beans here! -->
-    <bean id="myCoach"
-          class="org.example.springdemo.BaseballCoach">
+    <bean id="myFortune"
+          class="org.example.springdemo.HappyFortuneService">
 
+    </bean>
+
+    <bean id="myCoach"
+          class="org.example.springdemo.TrackCoach">
+
+        <!-- set up constructor injection-->
+        <constructor-arg ref="myFortune"/>
     </bean>
 
 </beans>

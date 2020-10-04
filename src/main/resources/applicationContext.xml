@@ -12,7 +12,7 @@
     <context:component-scan base-package="org.example.springdemo"/>
 
     <!-- Defines the beans here! -->
-    <bean id="myFortune"
+    <bean id="myFortuneService"
           class="org.example.springdemo.HappyFortuneService">
 
     </bean>
@@ -21,7 +21,13 @@
           class="org.example.springdemo.TrackCoach">
 
         <!-- set up constructor injection-->
-        <constructor-arg ref="myFortune"/>
+        <constructor-arg ref="myFortuneService"/>
+    </bean>
+
+    <bean id="myCricketCoach"
+          class="org.example.springdemo.CricketCoach">
+        <!-- set up setter injection-->
+        <property name="fortuneService" ref="myFortuneService" />
     </bean>
 
 </beans>

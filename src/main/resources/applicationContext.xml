@@ -11,6 +11,9 @@
 
     <context:component-scan base-package="org.example.springdemo"/>
 
+    <!-- load the properties file-->
+    <context:property-placeholder location="sport.properties"/>
+
     <!-- Defines the beans here! -->
     <bean id="myFortuneService"
           class="org.example.springdemo.HappyFortuneService">
@@ -27,7 +30,11 @@
     <bean id="myCricketCoach"
           class="org.example.springdemo.CricketCoach">
         <!-- set up setter injection-->
-        <property name="fortuneService" ref="myFortuneService" />
+        <property name="fortuneService" ref="myFortuneService"/>
+
+        <!-- inject literal values-->
+        <property name="emailAddress" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
     </bean>
 
 </beans>

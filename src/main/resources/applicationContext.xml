@@ -11,30 +11,6 @@
 
     <context:component-scan base-package="org.example.springdemo"/>
 
-    <!-- load the properties file-->
-    <context:property-placeholder location="sport.properties"/>
 
-    <!-- Defines the beans here! -->
-    <bean id="myFortuneService"
-          class="org.example.springdemo.HappyFortuneService">
-
-    </bean>
-
-    <bean id="myCoach"
-          class="org.example.springdemo.TrackCoach">
-
-        <!-- set up constructor injection-->
-        <constructor-arg ref="myFortuneService"/>
-    </bean>
-
-    <bean id="myCricketCoach"
-          class="org.example.springdemo.CricketCoach">
-        <!-- set up setter injection-->
-        <property name="fortuneService" ref="myFortuneService"/>
-
-        <!-- inject literal values-->
-        <property name="emailAddress" value="${foo.email}"/>
-        <property name="team" value="${foo.team}"/>
-    </bean>
 
 </beans>

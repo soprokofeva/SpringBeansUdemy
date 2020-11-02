@@ -1,15 +1,13 @@
 package org.example.springdemo;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AnnotationDemoAppProperties {
+public class SwimJavaConfigDemoApp {
     public static void main(String[] args) {
-        //        read spring config file
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
 
-//        get the bean from spring container
-        Coach theCoach = context.getBean("swimCoach", Coach.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SportConfig.class);
+
+        SwimCoach theCoach = context.getBean("swimCoach", SwimCoach.class);
 
         System.out.println(theCoach.getEmail());
         System.out.println(theCoach.getTeam());
@@ -22,6 +20,6 @@ public class AnnotationDemoAppProperties {
 
 //        close the context
         context.close();
-    }
 
+    }
 }
